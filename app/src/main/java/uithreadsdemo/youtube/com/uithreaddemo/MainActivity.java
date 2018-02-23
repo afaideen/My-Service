@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     MainActivity.this.onServiceConnected();
 
 //                    MyHelper.SetTimerOn(MainActivity.this, 1000, tvValue);//another method
-                    StartDisplayValue();
+//                    StartDisplayValue();
                 }
 
                 @Override
@@ -135,10 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void onServiceConnected() {
-        myServiceBinder.setStartListener(this);
+//        myServiceBinder.setStartListener(this);
+        myService.setListener(this);
     }
     @Override
-    public void PassingValue(final int mRandomNumber) {
+    public void DisplayValue(final int mRandomNumber) {
 
         runOnUiThread(new Runnable() {
             @Override
@@ -179,7 +180,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(isServiceBound){
             unbindService(serviceConnection);
             isServiceBound=false;
-            TimerOff(TaskConsoleOut);
+            myService.setListener(null);
+//            TimerOff(TaskConsoleOut);
 //            MyHelper.TimerOff();
         }
     }
@@ -205,11 +207,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService();
+        unbindService();//compulsary
         if(receiver != null){
             receiver = (MyBroadcastReceiver) MyHelper.unregisterReceiver(this, "mValueRandom", receiver);
         }
-        MyHelper.SavedSharedPref(this, isServiceBound);
+//        MyHelper.SavedSharedPref(this, isServiceBound);
     }
 
 

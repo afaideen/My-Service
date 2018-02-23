@@ -31,6 +31,10 @@ public class MyService extends Service {
         unbindService(conn);
     }
 
+    public void setListener(MyCustomListener listener) {
+        this.mListener = listener;
+    }
+
     private class RandomNumberRequestHandler extends Handler{
         @Override
         public void handleMessage(Message msg) {
@@ -65,6 +69,10 @@ public class MyService extends Service {
         public void setStartListener(MyCustomListener listener) {
             mListener = listener;
         }
+    }
+    private MyCustomListener mListener;
+    public interface MyCustomListener {
+        void DisplayValue(int mRandomNumber);
     }
 
     private IBinder mBinder=new MyServiceBinder();
@@ -127,7 +135,7 @@ public class MyService extends Service {
                     Log.i(getString(R.string.service_demo_tag),"Thread id: "+Thread.currentThread().getId()+", Random Number: "+ mRandomNumber);
 //                    MyHelper.sendBroadcast(getApplicationContext(), "mValueRandom", mRandomNumber);
                     if(mListener!=null)
-                        mListener.PassingValue(mRandomNumber);
+                        mListener.DisplayValue(mRandomNumber);
 
                 }
             }catch (InterruptedException e){
@@ -151,8 +159,5 @@ public class MyService extends Service {
         return mRandomNumber;
     }
 
-    private MyCustomListener mListener;
-    public interface MyCustomListener {
-        void PassingValue(int mRandomNumber);
-    }
+
 }
