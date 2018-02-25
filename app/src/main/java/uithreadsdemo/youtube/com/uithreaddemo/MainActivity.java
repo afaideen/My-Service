@@ -180,7 +180,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(isServiceBound){
             unbindService(serviceConnection);
             isServiceBound=false;
-            myService.setListener(null);
+//            myServiceBinder.stopGenerator();
+            myServiceBinder.setListener(null);
+//            myService.setListener(null);
 //            TimerOff(TaskConsoleOut);
 //            MyHelper.TimerOff();
         }

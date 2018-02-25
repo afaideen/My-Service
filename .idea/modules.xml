@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/My-Service.iml" filepath="$PROJECT_DIR$/My-Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/UIThreadDemo.iml" filepath="$PROJECT_DIR$/UIThreadDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/UIThreadDemo-master.iml" filepath="$PROJECT_DIR$/UIThreadDemo-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

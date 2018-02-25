@@ -54,6 +54,7 @@ public class MyService extends Service {
     }
 
     class MyServiceBinder extends Binder{
+
         public MyService getService(){
             return MyService.this;
         }
@@ -67,6 +68,14 @@ public class MyService extends Service {
         }
 
         public void setStartListener(MyCustomListener listener) {
+            mListener = listener;
+        }
+
+        public void stopGenerator(){
+            stopRandomNumberGenerator();
+        }
+
+        public void setListener(MyCustomListener listener) {
             mListener = listener;
         }
     }
